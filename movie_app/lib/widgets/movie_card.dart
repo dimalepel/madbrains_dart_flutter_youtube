@@ -43,7 +43,7 @@ class MovieCard extends StatelessWidget {
                     color: const Color.fromARGB(60, 9, 9, 12)
                   ),
                   child: Text(
-                    language,
+                    language.toPrettyString(),
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       color: Color(0xffffffff),
