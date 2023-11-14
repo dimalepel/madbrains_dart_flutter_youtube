@@ -5,7 +5,8 @@ abstract class Cinema {
   double voteAverage;
   String releaseDate;
   String description;
-  dynamic language;
+  String language;
+  bool isSubscription;
 
   Cinema({
     required this.id,
@@ -14,6 +15,7 @@ abstract class Cinema {
     required this.voteAverage,
     required this.description,
     required this.releaseDate,
-    required this.language
+    required this.language,
+    required this.isSubscription
   });
 }

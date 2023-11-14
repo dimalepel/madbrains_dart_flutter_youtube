@@ -1,41 +1,46 @@
 import '../models/movie.dart';
+import '../models/cinema.dart';
 
 List<Movie> _movies = [
   Movie(
       id: '1',
-      title: 'Синий жук',
-      picture: 'images/poster-1.jpg',
+      title: 'Мое прекрасное несчастье',
+      picture: 'assets/images/pic--poster-1.jpg',
       voteAverage: 10.0,
       releaseDate: '10.11.2023',
       description: 'Описание скоро будет...',
-      language: Language.russian
+      language: 'Русский',
+      isSubscription: true,
   ),
   Movie(
       id: '2',
       title: 'Домашняя игра',
-      picture: 'images/poster-2.jpg',
+      picture: 'assets/images/pic--poster-2.jpg',
       voteAverage: 20.0,
       releaseDate: '20.11.2023',
       description: 'Описание скоро будет...',
-      language: Language.english
+      language: 'Английский',
+      isSubscription: false
   ),
   Movie(
       id: '3',
       title: 'Салют 7',
-      picture: 'images/poster-3.jpg',
+      picture: 'assets/images/pic--poster-3.jpg',
       voteAverage: 30.0,
       releaseDate: '30.11.2023',
       description: 'Описание скоро будет...',
-      language: Language.russian
+      language: 'Русский',
+      isSubscription: false
   ),
   Movie(
       id: '4',
       title: 'Поймай меня, если сможешь',
-      picture: 'images/poster-4.jpg',
+      picture: 'assets/images/pic--poster-4.jpg',
       voteAverage: 40.0,
       releaseDate: '04.12.2023',
       description: 'Описание скоро будет...',
-      language: Language.russian
+      language: 'Русский',
+      isSubscription: true
   ),
 ];
 
@@ -44,8 +49,8 @@ enum Language {
   english
 }
 
-mixin Converter {
-  stringToEnum(String language) {
+mixin Converter on Cinema {
+  stringToEnum() {
     String lang = language.toLowerCase();
     dynamic langConverted;
 
@@ -83,6 +88,8 @@ Future<List<Movie>> getMovies() async {
   return _movies;
 }
 
-List<Movie> filterMovie(List<Movie> movies) {
-  return movies.where((movie) => movie.voteAverage > 20).toList();
+List<Movie> filterMovie(int rating, Language language, bool isSubscription) {
+  if (isSubscription == false) return _movies.where((movie) => (movie.voteAverage >= rating && movie.stringToEnum() == language)).toList();
+
+  return _movies.where((movie) => (movie.voteAverage >= rating && movie.stringToEnum() == language && movie.isSubscription == isSubscription)).toList();
 }

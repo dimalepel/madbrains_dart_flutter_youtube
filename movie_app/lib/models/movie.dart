@@ -9,7 +9,8 @@ class Movie extends Cinema with Converter {
     voteAverage,
     releaseDate,
     description,
-    language
+    language,
+    isSubscription
   }) : super(
       id: id,
       title: title,
@@ -17,7 +18,8 @@ class Movie extends Cinema with Converter {
       voteAverage: voteAverage,
       description: description,
       releaseDate: releaseDate,
-      language: language
+      language: language,
+      isSubscription: isSubscription
   );
 }
 
