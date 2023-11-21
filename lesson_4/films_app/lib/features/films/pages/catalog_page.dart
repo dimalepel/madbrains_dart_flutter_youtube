@@ -2,13 +2,13 @@ import 'package:films_app/app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/models/film_card_model.dart';
-import '../widgets/film_list.dart';
+import '../widgets/film_grid.dart';
 
-class HomePage extends StatelessWidget {
+class CatalogPage extends StatelessWidget {
   final String title;
   final List<FilmCardModel> films;
 
-  const HomePage({
+  const CatalogPage({
     super.key,
     required this.title,
     required this.films,
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       appBar: CustomAppBar(
         title: title,
       ),
-      body: FilmList(
+      body: FilmGrid(
         films: films,
       ),
     );

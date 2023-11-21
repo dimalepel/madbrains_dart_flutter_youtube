@@ -1,4 +1,4 @@
-import 'package:films_app/features/films/pages/home_page.dart';
+import 'package:films_app/app/widgets/main_page.dart';
 import 'package:flutter/material.dart';
 
 class FilmsApp extends StatelessWidget {
@@ -12,9 +12,7 @@ class FilmsApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: const HomePage(
-        title: 'Films App',
-      ),
+      home: const MainPage(),
     );
   }
 }

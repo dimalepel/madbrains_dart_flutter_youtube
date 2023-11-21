@@ -53,6 +53,8 @@ class FilmTile extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.headlineSmall,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -90,12 +92,12 @@ class FilmTile extends StatelessWidget {
                   ),
                   child: Text(
                     'Дата выхода: $releaseDate',
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
                 Text(
                   description,
-                  maxLines: 10,
+                  maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
