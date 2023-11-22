@@ -5,6 +5,8 @@ import '../../features/films/pages/catalog_page.dart';
 import '../models/film_card_model.dart';
 
 class MainPage extends StatefulWidget {
+  static const path = '/';
+
   const MainPage({super.key});
 
   static final List<_Tab> _tabs = [

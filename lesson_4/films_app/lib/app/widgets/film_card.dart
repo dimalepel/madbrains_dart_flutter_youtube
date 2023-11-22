@@ -1,5 +1,6 @@
 import 'package:films_app/app/widgets/buttons/primary_button.dart';
 import 'package:films_app/app/widgets/rating_chip.dart';
+import 'package:films_app/features/films/pages/film_detail.dart';
 import 'package:flutter/material.dart';
 
 import '../models/film_card_model.dart';
@@ -9,6 +10,8 @@ class FilmCard extends StatefulWidget {
   final String title;
   final String picture;
   final double voteAverage;
+  final String releaseDate;
+  final String description;
 
   const FilmCard({
     super.key,
@@ -16,6 +19,8 @@ class FilmCard extends StatefulWidget {
     required this.title,
     required this.picture,
     required this.voteAverage,
+    this.releaseDate = '',
+    this.description = '',
   });
 
   factory FilmCard.fromModel({
@@ -26,6 +31,8 @@ class FilmCard extends StatefulWidget {
       title: model.title,
       picture: model.picture,
       voteAverage: model.voteAverage,
+      releaseDate: model.releaseDate,
+      description: model.description,
     );
   }
 
@@ -83,7 +90,7 @@ class _FilmCardState extends State<FilmCard> {
                     _isFavorite = !_isFavorite;
                   });
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.favorite,
                 ),
               ),
@@ -118,7 +125,22 @@ class _FilmCardState extends State<FilmCard> {
             right: 8,
             child: PrimaryButton(
               title: 'More',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/film-detail',
+                  arguments: FilmDetailArguments(
+                    FilmCardModel(
+                      id: widget.id,
+                      title: widget.title,
+                      picture: widget.picture,
+                      voteAverage: widget.voteAverage,
+                      releaseDate: widget.releaseDate,
+                      description: widget.description,
+                    ),
+                  ),
+                );
+              },
             ),
           )
         ],

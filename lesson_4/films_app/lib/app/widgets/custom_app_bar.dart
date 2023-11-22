@@ -1,6 +1,5 @@
+import 'package:films_app/features/settings/pages/settings_page.dart';
 import 'package:flutter/material.dart';
-
-import '../../features/settings/pages/settings_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -34,13 +33,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           onPressed: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return SettingsPage();
-                },
-              ),
+              '/settings',
+              arguments: SettingsArguments('Bobik'),
             );
           },
           icon: const Icon(

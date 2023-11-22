@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/films/pages/film_detail.dart';
 import '../models/film_card_model.dart';
 
 class FilmTile extends StatelessWidget {
@@ -36,75 +37,93 @@ class FilmTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Image.asset(
-            picture,
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                  ),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          right: 8,
-                        ),
-                        child: Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                        ),
-                      ),
-                      Text(
-                        voteAverage.toStringAsFixed(1),
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: voteAverage < 4
-                              ? Colors.red
-                              : voteAverage >= 8
-                                  ? Colors.green
-                                  : Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 16,
-                    bottom: 16,
-                  ),
-                  child: Text(
-                    'Дата выхода: $releaseDate',
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                ),
-                Text(
-                  description,
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/film-detail',
+          arguments: FilmDetailArguments(
+            FilmCardModel(
+              id: id,
+              title: title,
+              picture: picture,
+              voteAverage: voteAverage,
+              releaseDate: releaseDate,
+              description: description,
             ),
           ),
-        ),
-      ],
+        );
+      },
+      child: Row(
+        children: [
+          Expanded(
+            child: Image.asset(
+              picture,
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(
+                            right: 8,
+                          ),
+                          child: Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        Text(
+                          voteAverage.toStringAsFixed(1),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: voteAverage < 4
+                                ? Colors.red
+                                : voteAverage >= 8
+                                    ? Colors.green
+                                    : Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 16,
+                      bottom: 16,
+                    ),
+                    child: Text(
+                      'Дата выхода: $releaseDate',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
+                  Text(
+                    description,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
