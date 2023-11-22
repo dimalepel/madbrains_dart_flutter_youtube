@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../models/film_card_model.dart';
 
-class FilmCard extends StatelessWidget {
+class FilmCard extends StatefulWidget {
   final int id;
   final String title;
   final String picture;
@@ -30,6 +30,13 @@ class FilmCard extends StatelessWidget {
   }
 
   @override
+  State<FilmCard> createState() => _FilmCardState();
+}
+
+class _FilmCardState extends State<FilmCard> {
+  bool _isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -48,7 +55,7 @@ class FilmCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                picture,
+                widget.picture,
                 fit: BoxFit.cover,
               ),
             ),
@@ -57,7 +64,52 @@ class FilmCard extends StatelessWidget {
             right: 4,
             top: 4,
             child: RatingChip(
-              voteAverage: voteAverage,
+              voteAverage: widget.voteAverage,
+            ),
+          ),
+          Positioned(
+            left: 4,
+            top: 4,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Theme.of(context).primaryColor,
+              ),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                color: _isFavorite ? Colors.red : Colors.white,
+                onPressed: () {
+                  setState(() {
+                    _isFavorite = !_isFavorite;
+                  });
+                },
+                icon: Icon(
+                  Icons.favorite,
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+              ),
+              child: Text(
+                widget.title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Colors.white,
+                  fontSize: 32,
+                  shadows: [
+                    const Shadow(
+                      offset: Offset(1, 2),
+                      blurRadius: 5.0,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           Positioned(
