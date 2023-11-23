@@ -19,7 +19,7 @@ class MoviesRepository {
   static Future<HomeModel?> loadData() async {
     try {
       const String url = '${MovieQuery.mockUrl}';
-      final Response<dynamic> response = await _dio.get<Map<dynamic, dynamic>>(
+      final Response<dynamic> response = await _dio.get(
         url,
       );
 
@@ -28,9 +28,8 @@ class MoviesRepository {
       final HomeModel model = dto.toDomain();
 
       return model;
-    } on DioException catch (error) {
-      print(error.response?.statusCode);
-      return null;
+    } catch (e) {
+      print(e);
     }
   }
 }
