@@ -15,7 +15,7 @@ MovieCardDTO _$MovieCardDTOFromJson(Map<String, dynamic> json) => MovieCardDTO(
       voteAverage: json['rating'] == null
           ? null
           : FilmCardRatingDTO.fromJson(json['rating'] as Map<String, dynamic>),
-      releaseDate: json['year'] as String?,
+      releaseDate: json['year'] as int?,
       description: json['description'] as String?,
     );
 

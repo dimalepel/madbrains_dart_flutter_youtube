@@ -3,7 +3,7 @@ class MovieCardModel {
   final String title;
   final String? picture;
   final double? voteAverage;
-  final String? releaseDate;
+  final int? releaseDate;
   final String? description;
 
   MovieCardModel({

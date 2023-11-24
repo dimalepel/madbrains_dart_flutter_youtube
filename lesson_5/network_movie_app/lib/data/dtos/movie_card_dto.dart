@@ -17,7 +17,7 @@ class MovieCardDTO {
   final FilmCardRatingDTO? voteAverage;
 
   @JsonKey(name: 'year')
-  final String? releaseDate;
+  final int? releaseDate;
 
   @JsonKey(name: 'description')
   final String? description;
