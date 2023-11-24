@@ -42,7 +42,7 @@ class _MovieCardState extends State<MovieCard> {
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress == null) return child;
 
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 },

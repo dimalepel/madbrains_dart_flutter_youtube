@@ -7,7 +7,7 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter movie',
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
